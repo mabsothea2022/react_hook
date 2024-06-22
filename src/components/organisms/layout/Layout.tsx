@@ -1,10 +1,21 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 
-const MasterLayout:React.FC = () =>{
-    return(
+const MasterLayout: React.FC = () => {
+    return (
         <div>
-            <h1>Master Layout</h1>
+            <div className="">
+                <h1 className="bg-red-700">Master Layout</h1>
+                <h2>Header</h2>
+            </div>
+            <div>
+                <Outlet />
+            </div>
+            <div>
+                <h2>Footer</h2>
+            </div>
         </div>
+
     );
 }
 
