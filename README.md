@@ -1,3 +1,13 @@
+How to check some package installed or not in project reactjs
+> Check react-router-dom
+```
+npm list react-router-dom
+```
+> How to install react-router-dom in project
+```
+npm install react-router-dom
+```
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
