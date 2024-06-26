@@ -12,7 +12,7 @@ const MasterLayout: React.FC = () => {
                 <Outlet />
             </div>
             <div>
-                <h2>Footer</h2>
+                <h2>How are U?</h2>
             </div>
         </div>
 

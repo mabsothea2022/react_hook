@@ -1,34 +1,72 @@
 import React from "react";
-import {useForm} from 'react-hook-form'
+import { useForm } from 'react-hook-form'
+
 
 const FormYouTube: React.FC = () => {
-    // const form = useForm();
-    useForm();
+    const form = useForm();
+    const {register} = form;
+    const {name,ref, onChange,onBlur} = register("username")
+    // useForm();
+    const OnSubmit = () => {
+        alert()
+
+    }
     return (
-        <div className="container">
-            <div>
-                <h1 className="text-xl">Youtube Form</h1>
-                <hr className="m-2" />
-                <form action="">
-                    <div className="flex flex-col gap-y-4">
-                        <div className="grid grid-cols-2 gap-y-0">
-                            <label htmlFor="username">Username</label>
-                            <input type="text" id="username" name="username" className="border-2 p-1 rounded-md" />
+
+        <div className="p-8">
+            <form action="" className="">
+                <div className="flex items-center justify-center">
+                    <div className="grid gap-y-3 w-1/2 h-auto bg-slate-600 items-start p-8 rounded-lg shadow-xl shadow-gray-300">
+                        <div className="flex flex-row justify-center items-center text-2xl text-black">
+                            <h1>Form YouTube</h1>
                         </div>
-                        <div className="grid grid-cols-2 gap-y-0">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" id="email" name="email" className="border-2 p-1 rounded-md" />
+                        <hr />
+                        <div className="flex flex-row justify-between items-center">
+                            <label htmlFor="username" className="mr-3">Username</label>
+                            <input
+                                type="text"
+                                id="username"
+                                // way 001
+                                // name={name}
+                                // ref={ref}
+                                // onChange={onChange}
+                                // onBlur={onBlur}
+
+                                // way002
+                                {...register("username")}
+                                className="rounded-xl border-2 p-2 bg-gray-300"
+                                placeholder="Enter email"
+                            />
                         </div>
-                        <div className="grid grid-cols-2 gap-y-0">
-                            <label htmlFor="channel">Channel</label>
-                            <input type="text" id="channel" name="channel" className="border-2 p-1 rounded-md" />
+                        <div className="flex flex-row justify-between items-center">
+                            <label htmlFor="email" className="mr-3">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                {...register("email")}
+                                className="rounded-xl border-2 p-2 bg-gray-300"
+                                placeholder="Enter email"
+                            />
                         </div>
-                        <div className="flex justify-cente gap-y-0">
-                            <button className="bg-blue-500 py-1 px-8 hover:bg-blue-600">Submit</button>
+                        <div className="flex flex-row justify-between items-center">
+                            <label htmlFor="channel" className="mr-3">Channel</label>
+                            <input
+                                type="text"
+                                id="channel"
+                                {...register("channel")}
+                                className="rounded-xl border-2 p-2 bg-gray-300"
+                                placeholder="Enter email"
+                            />
+                        </div>
+                        <div className="flex flex-row justify-center items-center">
+                            <button
+                                onClick={OnSubmit}
+                                className="bg-indigo-500 py-18 px-12 p-2 font-bold text-white"
+                            >Submit</button>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     );
 }
