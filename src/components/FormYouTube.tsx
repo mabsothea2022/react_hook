@@ -4,9 +4,30 @@ import { useForm } from 'react-hook-form'
 import { DevTool } from '@hookform/devtools'
 
 let renderCount = 0;
+// define all type of prop in form
+type FormValues = {
+    username: string,
+    email: string,
+    channel: string
+}
+
 
 const FormYouTube: React.FC = () => {
-    const form = useForm<FormValues>();     // this obj of form
+    const form = useForm({
+        // for add defaut value to hook form 
+        // way 001 (static)
+        // defaultValues: {
+        //     username: 'Sothea',
+        //     email: '',
+        //     channel: ''
+        // },
+        
+        // way 002 (dynamic)
+        defaultValues:async () =>{
+            const res = await fetch('https://jsonplaceholder.typicode.com/users/');
+        }
+        
+    });     // this obj of form
     const { register, control, handleSubmit, formState } = form;    // this is destructure of the form component
     const { errors } = formState;
     // const {name,ref, onChange,onBlur} = register("username") // this line use for way1 for start tracking data on form
@@ -17,13 +38,6 @@ const FormYouTube: React.FC = () => {
 
     // increment renderCount if the form hook is rerender
     renderCount++;
-
-    // define all type of prop in form
-    type FormValues = {
-        username: string,
-        email: string,
-        channel: string
-    }
 
     return (
         <div className="p-8">
@@ -69,15 +83,15 @@ const FormYouTube: React.FC = () => {
                                     // }
 
                                     // this's validate with key obj notAdmin
-                                    validate:{
-                                        notAdmin:(fieldAdmin)=>{
+                                    validate: {
+                                        notAdmin: (fieldAdmin) => {
                                             return (
-                                                fieldAdmin != "admin@example.com" || 
+                                                fieldAdmin != "admin@example.com" ||
                                                 "Enter a different email address"
                                             )
                                         },
-                                        nottBlackList:(fieldValue)=>{
-                                            return(
+                                        nottBlackList: (fieldValue) => {
+                                            return (
                                                 !fieldValue.endsWith("baddomain.com") ||
                                                 "Thsi domain is not supported!"
                                             )
@@ -93,7 +107,7 @@ const FormYouTube: React.FC = () => {
                             <label htmlFor="channel" className="mr-3">Channel</label>
                             <input
                                 type="text"
-                                {...register("channel", { required: {value:true,message:'Enter channel'} })}
+                                {...register("channel", { required: { value: true, message: 'Enter channel' } })}
                                 className="rounded-xl border-2 p-2 bg-gray-300"
                                 placeholder="Enter your channel"
                             />

@@ -1,11 +1,19 @@
-import React from "react";
+// import React from "react";
 
-const notFoundPage: React.FC = () => {
+// const notFoundPage: React.FC = () => {
+//     return (
+//         <div>
+//             <h1>Not found!!!</h1>
+//         </div>
+//     );
+// }
+
+// export default notFoundPage;
+
+export function notFoundPage(){
     return (
         <div>
             <h1>Not found!!!</h1>
         </div>
     );
 }
-
-export default notFoundPage;
